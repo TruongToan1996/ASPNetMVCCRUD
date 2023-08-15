@@ -7,6 +7,11 @@ newpasswords
 
 ;Trusted_Connection=true;TrustServerCertificate=true;
 
-dotnet ef database update
 
+Chay lenh nay de khoi tao migrations 
  dotnet ef migrations add  InitialMigration
+
+
+
+Chay lenh nay de cap nhat table trong db
+ dotnet ef database update
