@@ -12,7 +12,7 @@ namespace ASPNetMVCCRUD
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<MVCDemoDBContext>(options =>
-            options.UseSqlServer(""));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("MVCDemoConnecttionString")));
 
             var app = builder.Build();
 
