@@ -89,16 +89,16 @@ namespace ASPNetMVCCRUD.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> View(UpdateEmployeeViewModel model)
+        public async Task<IActionResult> View(UpdateEmployeeViewModel update)
         {
-            var employee =await mvcDemoDBContext.Employees.FindAsync(model.Id);
+            var employee =await mvcDemoDBContext.Employees.FindAsync(update.Id);
             if(employee != null)
             {
-                employee.Name = model.Name;
-                employee.Email = model.Email;
-                employee.Salary = model.Salary;
-                employee.DateOfBirth = model.DateOfBirth;
-                employee.Department = model.Department;
+                employee.Name = update.Name;
+                employee.Email = update.Email;
+                employee.Salary = update.Salary;
+                employee.DateOfBirth = update.DateOfBirth;
+                employee.Department = update.Department;
 
                 await mvcDemoDBContext.SaveChangesAsync();
                 return RedirectToAction("Index");
