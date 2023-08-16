@@ -14,6 +14,8 @@ namespace ASPNetMVCCRUD.Controllers
         {
             this.mvcDemoDBContext = mvcDemoDBContext;
         }
+
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -21,10 +23,10 @@ namespace ASPNetMVCCRUD.Controllers
             return View(employees);
         }
 
-        public MVCDemoDBContext GetMvcDemoDBContext()
-        {
-            return mvcDemoDBContext;
-        }
+
+
+
+
 
 
         [HttpGet]
@@ -32,6 +34,11 @@ namespace ASPNetMVCCRUD.Controllers
         {
             return View();
         }
+
+
+
+
+
         [HttpPost]
         public async Task<IActionResult> Add(AddEmployeeViewModel addEmployeeRequest)
         {
@@ -51,6 +58,11 @@ namespace ASPNetMVCCRUD.Controllers
             await mvcDemoDBContext.SaveChangesAsync();
             return RedirectToAction("Index"); 
         }
+
+
+
+
+
         [HttpGet]
         public async Task<IActionResult> View(Guid id)
         {
@@ -74,17 +86,19 @@ namespace ASPNetMVCCRUD.Controllers
             return RedirectToAction("Index");
 
         }
+
+
         [HttpPost]
-        public async Task<IActionResult> View(UpdateEmployeeViewModel update)
+        public async Task<IActionResult> View(UpdateEmployeeViewModel model)
         {
-            var employee =await mvcDemoDBContext.Employees.FindAsync(update.Id);
+            var employee =await mvcDemoDBContext.Employees.FindAsync(model.Id);
             if(employee != null)
             {
-                employee.Name = update.Name;
-                employee.Email = update.Email;
-                employee.Salary = update.Salary;
-                employee.DateOfBirth = update.DateOfBirth;
-                employee.Department = update.Department;
+                employee.Name = model.Name;
+                employee.Email = model.Email;
+                employee.Salary = model.Salary;
+                employee.DateOfBirth = model.DateOfBirth;
+                employee.Department = model.Department;
 
                 await mvcDemoDBContext.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -92,6 +106,9 @@ namespace ASPNetMVCCRUD.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
+
 
         [HttpPost]
         public async Task<IActionResult> Delete (UpdateEmployeeViewModel update)
